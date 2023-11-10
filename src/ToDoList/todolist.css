@@ -1,0 +1,36 @@
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #969696;
+    padding: 20px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 2px;
+    border: #333 solid 1px;
+}
+.trash:hover {
+    color: red;
+    cursor: pointer;
+}
+.title {
+    color: black;
+    font-size: 32px;
+    font-weight: 600;
+    text-align: center;
+}
+.block {
+    width: 100%;
+    text-align: center;
+}
+.block input {
+    width: 300px;
+    height: 30px;
+    border-radius: 3px;
+}
+.block .primary {
+    height: 35px;
+    color: black;
+    background-color: green;
+}

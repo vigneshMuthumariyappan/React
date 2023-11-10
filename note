@@ -1,0 +1,160 @@
+Syntax: <>{jsvariable}</> = use js variables
+accept -> array, int, string
+Not accept -> object, bool
+----------------------------------
+docker pull node:latest
+sudo npm install -g npm@10.2.2
+----------------------------------
+Event with parameter:
+=====================
+onClick={() => functionName('pass argument')}
+onClick={(e) => functionName(e)}
+state not use on conditional statement; ||**
+useState(99);
+count [count, setCount] = useState(99);
+
+function increment Function () {
+	setCount (prevCount => prevCount + 1)
+	setCount (prevCount => prevCount + 1)
+}
+
+useState call all the useState() function
+solution useState(() => functionName());
+
+Don't use object in useState other vise declare the variable and use;
+
+useEffect -> Has two property 
+=========
+
+useEffect( () => {}, []);
+const items;
+() => {} -> function;
+[] -> value that has listen ex: [items];
+
+======================================================================================
+Advance js;
+-----------
+
+1) Hosting
+
+a() -> work
+b() -> Not work.
+
+// fuction declaration
+function a() {
+	console.log("A got executed");
+}
+// function expression
+const b () => {
+	console.log("B got executed");
+}
+
+call, apply, bind
+=================
+----
+Call
+----
+const wizard = {
+	name: 'Merlin',
+	health: 50,
+	heal() {
+		return this.health = 100;
+	}
+}
+const archer = {
+	name: 'Robin Hood',
+	health: 30
+}
+console.log('1', archer)
+wizard.heal.call(archer)
+console.log('2', archer)
+
+-----
+apply - It help to pass the argument
+-----
+const wizard = {
+	name: 'Merlin',
+	health: 50,
+	heal(num1, num2) {
+		return this.health = num1 + num2;
+	}
+}
+const archer = {
+	name: 'Robin Hood',
+	health: 30
+}
+wizard.heal.apply(archer, [num1, num2]);
+
+-----
+bind - will bind object
+-----
+
+--------------------
+Currying using 	bind
+--------------------
+function sum (a, b) {
+	return a+b;
+}
+2 usages
+function shipment (f) {
+	return function (a) { // 1
+		return function (b) { // 2
+			return f(a, b);
+	}
+}
+const calculateShipping = shipment(sum); //
+const basicProcessing = calculateShipping (a: 5) //
+console.log(basicProcessing ( b: 3));
+console.log(basicProcessing ( b: 4));
+console.log(shipment (sum) (a: 5) ()
+
+
+-------------------
+High Order Function
+-------------------
+
+The function argument pass an function or it return the function is called High Order Function
+
+function shipment (f) {
+	return function (a) { // 1
+		return function (b) { // 2
+			return f(a, b);
+	}
+}
+
+------------------
+Lightout extention - Later
+------------------
+
+---------
+Closures
+---------
+A closure is the combination of a function and the lexical environment within which that function was declared.
+function callMeMayBe() {
+	setTimeout(function() {
+		console.log(callMe);
+	}, 4000)
+	const callMe = 'Hi! I am out';
+}
+
+--------
+OOPS
+--------
+
+2022 Implement the private property start with # like ('#myVariable');
+
+
+-----------
+"functions" -> Important is mutated.
+-----------
+
+pure function -> there is no side affect 
+=============
+non pure function -> has side affect
+=================
+const array = [1,2,3,4];
+function mutatedArray(arr) {
+	arr.pop();
+}
+mutatedArray(array)
+console.log(array);
