@@ -158,3 +158,14 @@ function mutatedArray(arr) {
 }
 mutatedArray(array)
 console.log(array);
+
+
+--------------
+yup, Formik - validation
+--------------
+
+----------------
+Lottie Animation
+----------------
+
+Lottie is web site provide the Animation for the simple 404 FaLinkedin;
