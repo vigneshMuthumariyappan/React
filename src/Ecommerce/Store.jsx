@@ -1,11 +1,11 @@
 import React from "react";
-import NavBar from "./Nav/NavBar";
+import Categories from "./Categories/Categories";
 
 const Store = () => {
 
     return (
         <>
-          <NavBar current="/"/>
+          <Categories />
         </>
     )
 }

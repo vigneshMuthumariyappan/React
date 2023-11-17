@@ -5,13 +5,11 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
-const NavBar = ({current}) => {
-    console.log(current);
-    const[nav, setNav] = useState(['new', 'stamp']);
-    let count = 0;
-
+const NavBar = () => {
+    const {id} = useParams();
+    const[nav, setNav] = useState([]);
     useEffect(() => {
         const navCategory = async() => {
             try {
@@ -30,10 +28,10 @@ const NavBar = ({current}) => {
                 <Navbar.Brand >Shop</Navbar.Brand>
                 <Nav className="me-auto">
                     {nav.length && 
-                        nav.map((item) => (
-                            <Nav.Link key={count++} style={{textTransform: 'capitalize'}}>
-                                <Link to={`/products/categories/${item}`} className={current === item ? "text-decoration-none active": "text-decoration-none"}>{item}</Link>
-                            </Nav.Link>
+                        nav.map((item, index) => (
+                            <li className='list-unstyled' key={index}>
+                                <Link style={{textTransform: 'capitalize'}} to={`/products/categories/${item}`} className={id === item ? "text-decoration-none m-2 active": "text-decoration-none m-2"}>{item}</Link>
+                            </li>
                         ))
                     }
                 </Nav>

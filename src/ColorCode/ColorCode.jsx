@@ -1,26 +1,45 @@
-import { useState } from "react";
+import { useReducer } from "react";
 import Container from "./Container";
 import Forms from "./Forms";
 
+const reducer = (state, action) => {
+    if (action.type === 'color-code') {
+        return {
+            ...state,
+            colorCode: action.value
+        }
+    }
+
+    if (action.type === 'color-name') {
+        return {
+            ...state,
+            colorName: action.value
+        }
+    }
+
+    if (action.type === 'is-toggle') {
+        return {
+            ...state,
+            isToggle: action.value
+        }
+    }
+    return state;
+}
 export default function ColorCode() {
 
-    const [colorName, setColorName] = useState('');
-    const [colorCode, setColorCode] = useState('Empty value');
-    const [isToggle, setIsToggle] = useState(true);
-    
+    const [state, dispatch] = useReducer(reducer, {
+        colorName: '',
+        colorCode: 'Empty value',
+        isToggle: true
+    });
     return (<div className="color-code d-flex align-items-center justify-content-center container-all">
         <div className="w-auto h-auto">
             <Container 
-                colorName={colorName}
-                colorCode={colorCode}
-                isToggle = {isToggle}
+                state = {state}
             />
             <Forms 
-                setColorName = {setColorName}
-                setColorCode = {setColorCode}
-                colorName = {colorName}
-                isToggle = {isToggle}
-                setIsToggle = {setIsToggle}
+                state = {state}
+                dispatch = {dispatch}
             />
         </div>
     </div>);

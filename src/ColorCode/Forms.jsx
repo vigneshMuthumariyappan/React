@@ -1,6 +1,6 @@
 import { Button } from "react-bootstrap";
 
-export default function Forms({setColorName, setColorCode, colorName, isToggle, setIsToggle}) {
+export default function Forms({state, dispatch}) {
 
     const convert = (rgb) => { 
         rgb = rgb.match(/^rgb\((\d+), \s*(\d+), \s*(\d+)\)$/); 
@@ -15,21 +15,30 @@ export default function Forms({setColorName, setColorCode, colorName, isToggle, 
     const setColor = (e) => {
         e.preventDefault()
         const d = document.getElementById("main-div");
-        d.style.background = colorName;
+        d.style.background = state.colorName;
         const rbg = window.getComputedStyle(d).backgroundColor;
         const code = convert(rbg);
-        setColorCode(code)
-        setColorName('');
+        dispatch({
+            type: 'color-code',
+            value: code
+        })
+        dispatch({
+            type: 'color-name',
+            value: ''
+        });
     }
     return (
         <>
             <form onSubmit={(e) => (setColor(e))}>
                 <input type="text" autoFocus required placeholder="Add color name"
-                    onChange={e => setColorName(e.target.value)}
-                    value={colorName}
+                    onChange={e => dispatch({
+                        type: 'color-name',
+                        value: e.target.value
+                    })}
+                    value={state.colorName}
                 />
             </form>
-            <Button variant="danger" onClick={() => (setIsToggle(!isToggle))}>Toggle Text Color</Button>
+            <Button variant="danger" onClick={() => (dispatch({type: 'is-toggle', value:!state.isToggle}))}>Toggle Text Color</Button>
         </>
     );
 }
